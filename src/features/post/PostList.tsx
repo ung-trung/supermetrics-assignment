@@ -1,7 +1,7 @@
 import { useAppSelector } from '@src/app/hooks'
 import { useRouter } from 'next/router'
 import PostItem from './components/PostItem'
-
+import styles from './share.module.css'
 const PostList = () => {
   const postFilterTerm = useAppSelector((state) => state.filter.postFilterTerm)
   const postDateOrder = useAppSelector((state) => state.filter.postDateOrder)
@@ -11,7 +11,7 @@ const PostList = () => {
   const userPosts = posts.filter((post) => post.from_id === selectedUserId)
 
   return (
-    <div>
+    <div className={styles.container}>
       {userPosts
         .filter((post) =>
           post.message

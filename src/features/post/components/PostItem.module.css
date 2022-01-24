@@ -4,6 +4,14 @@
   border: 1px solid;
   border-radius: var(--border-radius);
 }
+
+.container:first-child {
+  margin-top: 0;
+}
+.container:last-child {
+  margin-bottom: 0;
+}
+
 .time {
   margin-bottom: 1rem;
   padding-bottom: 0.4rem;

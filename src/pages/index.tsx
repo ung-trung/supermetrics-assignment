@@ -32,7 +32,9 @@ const IndexPage: NextPage = () => {
 
       <div className={styles.gridContainer}>
         <div>
-          <UserFilter />
+          <div className={styles.postFilterOptions}>
+            <UserFilter />
+          </div>
           <UserList />
         </div>
         <div>

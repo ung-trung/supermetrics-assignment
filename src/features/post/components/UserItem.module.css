@@ -10,6 +10,13 @@
   border-radius: var(--border-radius);
 }
 
+.container:first-child {
+  margin-top: 0;
+}
+.container:last-child {
+  margin-bottom: 0;
+}
+
 .postCount {
   border: 1px solid;
   height: 2rem;

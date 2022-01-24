@@ -4,6 +4,7 @@ import UserItem from './components/UserItem'
 import { IUser } from '@src/type'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
+import styles from './share.module.css'
 
 const distinctUsersFromPosts = (posts: IPost[]): IUser[] => {
   const distinctUserIds = [
@@ -36,7 +37,7 @@ const UserList = () => {
   }, [selectedUserId, distinctUsers])
 
   return (
-    <div>
+    <div className={styles.container}>
       {distinctUsers
         .filter((user) =>
           user.name

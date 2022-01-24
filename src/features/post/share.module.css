@@ -1,0 +1,10 @@
+.container {
+  height: 35vh;
+  overflow: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    height: 80vh;
+  }
+}

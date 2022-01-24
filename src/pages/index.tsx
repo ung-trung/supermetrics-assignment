@@ -1,4 +1,8 @@
 import { useAppDispatch, useAppSelector } from '@src/app/hooks'
+import {
+  setPostFilterTerm,
+  setUserFilterTerm
+} from '@src/features/filter/filterSlice'
 import PostList from '@src/features/post/PostList'
 import { fetchPosts } from '@src/features/post/postSlice'
 import UserList from '@src/features/post/UserList'
@@ -27,6 +31,19 @@ const IndexPage: NextPage = () => {
         <title>Trung Ung | Assignment</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <input
+        onChange={(e) => {
+          dispatch(setUserFilterTerm(e.target.value))
+        }}
+        type="text"
+      />
+      <input
+        onChange={(e) => {
+          dispatch(setPostFilterTerm(e.target.value))
+        }}
+        type="text"
+      />
+
       <UserList></UserList>
       <PostList></PostList>
     </div>

@@ -31,5 +31,5 @@
 }
 
 .active {
-  background-color: vaR(--base-2);
+  background-color: var(--base-2);
 }

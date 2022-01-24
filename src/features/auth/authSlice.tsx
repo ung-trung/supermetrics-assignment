@@ -43,7 +43,16 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    logout: () => initialState
+    logout: () => {
+      localStorage.removeItem('token')
+      localStorage.removeItem('email')
+      return {
+        user: null,
+        token: null,
+        isLoading: false,
+        error: null
+      }
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -75,5 +84,5 @@ export const login = createAsyncThunk<IUserRegisterData, LoginParams>(
     return data.data
   }
 )
-
+export const { logout } = authSlice.actions
 export default authSlice.reducer

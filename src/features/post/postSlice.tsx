@@ -6,27 +6,24 @@ import {
 import { AppState } from '@src/app/store'
 import supermetricsApi from '@src/services/supermetricsApi'
 
-import { IPostFetchData, IPostFetchResponse, IPost } from '@src/type'
+import { IPostFetchResponse, IPost } from '@src/type'
 
 interface PostState {
   posts: IPost[]
   isLoading: boolean
-  allLoaded: boolean
-  pageNumber: number | string
   error: SerializedError
 }
 export interface FetchPostsParams {
   page: number | string
-  name: string
 }
 
 const initialState: PostState = {
   posts: [],
-  pageNumber: 1,
   isLoading: false,
-  allLoaded: false,
   error: null
 }
+
+const maxPage = 10
 
 export const postSlice = createSlice({
   name: 'post',
@@ -39,8 +36,7 @@ export const postSlice = createSlice({
       })
       .addCase(fetchPosts.fulfilled, (state, action) => {
         state.isLoading = false
-        state.posts = state.posts.concat(action.payload.posts)
-        state.pageNumber = action.payload.page
+        state.posts = action.payload
       })
       .addCase(fetchPosts.rejected, (state, action) => {
         state.isLoading = false
@@ -50,19 +46,28 @@ export const postSlice = createSlice({
 })
 
 export const fetchPosts = createAsyncThunk<
-  IPostFetchData,
-  FetchPostsParams,
+  IPost[],
+  undefined,
   { state: AppState }
->('auth/login', async ({ page }, { getState }) => {
+>('post/fetchPosts', async (_, { getState }) => {
   const sl_token = getState().auth.token
   if (!sl_token) {
     throw 'No token found'
   }
-  const res = await supermetricsApi.get(
-    `/assignment/posts/sl_token=${sl_token}&page=${page}`
+  const promises = Array.from(Array(maxPage).keys()).map((page) =>
+    supermetricsApi.get(
+      `/assignment/posts?sl_token=${sl_token}&page=${page + 1}`
+    )
   )
-  const data: IPostFetchResponse = res.data
-  return data.data
+  const responses = await Promise.all(promises)
+
+  const result: IPost[] = responses
+    .map((res) => res.data as IPostFetchResponse)
+    .reduce((acc, cur) => {
+      return [...acc, ...cur.data.posts]
+    }, [])
+
+  return result
 })
 
 export default postSlice.reducer

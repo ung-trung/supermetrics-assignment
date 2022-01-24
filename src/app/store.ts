@@ -1,10 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 
 import auth from '@src/features/auth/authSlice'
+import post from '@src/features/post/postSlice'
 
 export function makeStore() {
   return configureStore({
-    reducer: { auth }
+    reducer: { post, auth }
   })
 }
 

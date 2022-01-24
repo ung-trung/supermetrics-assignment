@@ -12,7 +12,8 @@ const UserItem: FC<{ user: IUser }> = ({ user }) => {
   const userFilterTerm = useAppSelector((state) => state.filter.userFilterTerm)
   const matches = match(
     user.name.toLocaleLowerCase(),
-    userFilterTerm.toLocaleLowerCase()
+    userFilterTerm.toLocaleLowerCase(),
+    { insideWords: true }
   )
   const parts = parse(user.name, matches)
   return (

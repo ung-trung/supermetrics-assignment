@@ -8,7 +8,8 @@ const PostItem: FC<{ post: IPost }> = ({ post }) => {
   const postFilterTerm = useAppSelector((state) => state.filter.postFilterTerm)
   const matches = match(
     post.message.toLocaleLowerCase(),
-    postFilterTerm.toLocaleLowerCase()
+    postFilterTerm.toLocaleLowerCase(),
+    { insideWords: true }
   )
   const parts = parse(post.message, matches)
   return (

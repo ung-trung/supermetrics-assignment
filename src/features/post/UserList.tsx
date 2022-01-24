@@ -1,7 +1,6 @@
 import { useAppSelector } from '@src/app/hooks'
-import { IPost } from '@src/type'
+import { IPost, IUser } from '@src/type'
 import UserItem from './components/UserItem'
-import { IUser } from '@src/type'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import styles from './share.module.css'

@@ -1,17 +1,14 @@
-import { useAppDispatch, useAppSelector } from '@src/app/hooks'
-import {
-  setPostFilterTerm,
-  setUserFilterTerm,
-  togglePostDateOrder
-} from '@src/features/filter/filterSlice'
-import PostList from '@src/features/post/PostList'
-import { fetchPosts } from '@src/features/post/postSlice'
-import UserList from '@src/features/post/UserList'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-
+import { useAppDispatch, useAppSelector } from '@src/app/hooks'
+import { fetchPosts } from '@src/features/post/postSlice'
+import PostList from '@src/features/post/PostList'
+import UserList from '@src/features/post/UserList'
+import UserFilter from '@src/features/filter/UserFilter'
+import PostFilter from '@src/features/filter/PostFilter'
+import PostDirection from '@src/features/filter/PostDirection'
 import styles from 'src/styles/Home.module.css'
 
 const IndexPage: NextPage = () => {
@@ -27,33 +24,25 @@ const IndexPage: NextPage = () => {
   }, [hasToken])
 
   return (
-    <div className={styles.container}>
+    <div className="container">
       <Head>
         <title>Trung Ung | Assignment</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <input
-        onChange={(e) => {
-          dispatch(setUserFilterTerm(e.target.value))
-        }}
-        type="text"
-      />
-      <input
-        onChange={(e) => {
-          dispatch(setPostFilterTerm(e.target.value))
-        }}
-        type="text"
-      />
 
-      <button
-        onClick={() => {
-          dispatch(togglePostDateOrder())
-        }}>
-        Toggle post order
-      </button>
-
-      <UserList></UserList>
-      <PostList></PostList>
+      <div className={styles.gridContainer}>
+        <div>
+          <UserFilter />
+          <UserList />
+        </div>
+        <div>
+          <div className={styles.postFilterOptions}>
+            <PostFilter />
+            <PostDirection />
+          </div>
+          <PostList></PostList>
+        </div>
+      </div>
     </div>
   )
 }

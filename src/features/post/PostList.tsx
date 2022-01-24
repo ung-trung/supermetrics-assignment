@@ -3,10 +3,10 @@ import { useRouter } from 'next/router'
 import PostItem from './components/PostItem'
 
 const PostList = () => {
-  const router = useRouter()
   const postFilterTerm = useAppSelector((state) => state.filter.postFilterTerm)
   const postDateOrder = useAppSelector((state) => state.filter.postDateOrder)
   const posts = useAppSelector((state) => state.post.posts)
+  const router = useRouter()
   const selectedUserId = router.query.user_id
   const userPosts = posts.filter((post) => post.from_id === selectedUserId)
 

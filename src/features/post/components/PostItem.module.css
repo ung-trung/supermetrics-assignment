@@ -1,0 +1,14 @@
+.container {
+  padding: 1rem;
+  margin: 2rem 0;
+  border: 1px solid;
+  border-radius: var(--border-radius);
+}
+.time {
+  margin-bottom: 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid;
+}
+
+.content {
+}

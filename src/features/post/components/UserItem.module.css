@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 4rem;
+  padding: 1rem;
+  margin: 2rem 0;
+  border: 1px solid;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+}
+
+.postCount {
+  border: 1px solid;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 0.2rem;
+  background-color: var(--primary);
+  color: var(--primary-content);
+}
+
+.active {
+  background-color: vaR(--base-2);
+}

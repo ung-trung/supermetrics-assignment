@@ -55,6 +55,7 @@ a {
   line-height: 2;
   padding-left: 1rem;
   padding-right: 1rem;
+  border-width: 1px;
   border-radius: var(--border-radius);
 }
 
@@ -78,4 +79,40 @@ a {
   border-color: var(--primary);
   background: var(--primary);
   color: var(--primary-content);
+}
+
+.icon-btn {
+  cursor: pointer;
+  height: 3rem;
+  width: 3rem;
+
+  text-transform: uppercase;
+  border-radius: 50%;
+}
+
+.container {
+  max-width: 85%;
+  width: 100%;
+  margin: 0 auto;
+  background: var(--base-1);
+  color: var(--base-content);
+  border-radius: var(--border-radius);
+  padding: 2.5rem 2rem;
+  border: 1px solid;
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 4px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  border-radius: 9999px;
+  background-color: #AAAAAA;
 }

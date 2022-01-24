@@ -35,3 +35,9 @@ export interface IUserRegisterData {
   email: string
   sl_token: string
 }
+
+export interface IUser {
+  id: string
+  name: string
+  postCount: number
+}

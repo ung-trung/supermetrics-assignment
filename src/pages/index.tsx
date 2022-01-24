@@ -1,5 +1,7 @@
 import { useAppDispatch, useAppSelector } from '@src/app/hooks'
+import PostList from '@src/features/post/PostList'
 import { fetchPosts } from '@src/features/post/postSlice'
+import UserList from '@src/features/post/UserList'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
@@ -14,17 +16,19 @@ const IndexPage: NextPage = () => {
   useEffect(() => {
     if (!hasToken) {
       router.push('/login')
+    } else {
+      dispatch(fetchPosts())
     }
   }, [hasToken])
-  useEffect(() => {
-    dispatch(fetchPosts())
-  }, [])
+
   return (
     <div className={styles.container}>
       <Head>
         <title>Trung Ung | Assignment</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <UserList></UserList>
+      <PostList></PostList>
     </div>
   )
 }

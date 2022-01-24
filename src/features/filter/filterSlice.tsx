@@ -22,12 +22,12 @@ export const filterSlice = createSlice({
     setPostFilterTerm: (state, action: PayloadAction<string>) => {
       state.postFilterTerm = action.payload
     },
-    setPostDateOrder: (state, action: PayloadAction<'asc' | 'desc'>) => {
-      state.userFilterTerm = action.payload
+    togglePostDateOrder: (state) => {
+      state.postDateOrder = state.postDateOrder === 'asc' ? 'desc' : 'asc'
     }
   }
 })
 
 export default filterSlice.reducer
-export const { setUserFilterTerm, setPostFilterTerm, setPostDateOrder } =
+export const { setUserFilterTerm, setPostFilterTerm, togglePostDateOrder } =
   filterSlice.actions

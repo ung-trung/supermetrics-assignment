@@ -4,6 +4,7 @@ import UserItem from './components/UserItem'
 import { IUser } from '@src/type'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
+
 const distinctUsersFromPosts = (posts: IPost[]): IUser[] => {
   const distinctUserIds = [
     ...Array.from(new Set(posts.map((post) => post.from_id)))
@@ -27,6 +28,7 @@ const UserList = () => {
   const posts = useAppSelector((state) => state.post.posts)
   const distinctUsers = distinctUsersFromPosts(posts)
   const selectedUserId = router.query.user_id
+
   useEffect(() => {
     if (!selectedUserId && distinctUsers.length > 0) {
       router.push(`/?user_id=${distinctUsers[0].id}`)
@@ -41,6 +43,11 @@ const UserList = () => {
             .toLocaleLowerCase()
             .includes(userFilterTerm.toLocaleLowerCase())
         )
+        .sort((a, b) => {
+          if (a.name < b.name) return -1
+          if (a.name > b.name) return 1
+          return 0
+        })
         .map((user) => (
           <UserItem key={user.id} user={user} />
         ))}

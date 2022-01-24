@@ -1,7 +1,8 @@
 import { useAppDispatch, useAppSelector } from '@src/app/hooks'
 import {
   setPostFilterTerm,
-  setUserFilterTerm
+  setUserFilterTerm,
+  togglePostDateOrder
 } from '@src/features/filter/filterSlice'
 import PostList from '@src/features/post/PostList'
 import { fetchPosts } from '@src/features/post/postSlice'
@@ -43,6 +44,13 @@ const IndexPage: NextPage = () => {
         }}
         type="text"
       />
+
+      <button
+        onClick={() => {
+          dispatch(togglePostDateOrder())
+        }}>
+        Toggle post order
+      </button>
 
       <UserList></UserList>
       <PostList></PostList>

@@ -14,7 +14,7 @@ const PostItem: FC<{ post: IPost }> = ({ post }) => {
   const parts = parse(post.message, matches)
   return (
     <div className={styles.container}>
-      <div className={styles.time}>
+      <div className={styles.time} data-testid={`post-time-${post.id}`}>
         {new Date(post.created_time).toUTCString().slice(0, -3)}
       </div>
       <div className={styles.content}>

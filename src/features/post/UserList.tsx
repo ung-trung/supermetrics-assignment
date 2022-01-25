@@ -49,7 +49,11 @@ const UserList = () => {
           return 0
         })
         .map((user) => (
-          <UserItem key={user.id} user={user} />
+          <UserItem
+            key={user.id}
+            isActive={user.id === selectedUserId}
+            user={user}
+          />
         ))}
     </div>
   )

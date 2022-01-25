@@ -6,9 +6,12 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 import styles from './UserItem.module.css'
-const UserItem: FC<{ user: IUser }> = ({ user }) => {
+const UserItem: FC<{ user: IUser; isActive: boolean }> = ({
+  user,
+  isActive
+}) => {
   const router = useRouter()
-  const selectedUserId = router.query.user_id
+
   const userFilterTerm = useAppSelector((state) => state.filter.userFilterTerm)
   const matches = match(
     user.name.toLocaleLowerCase(),
@@ -18,10 +21,7 @@ const UserItem: FC<{ user: IUser }> = ({ user }) => {
   const parts = parse(user.name, matches)
   return (
     <Link href={`/?user_id=${user.id}`}>
-      <div
-        className={`${styles.container} ${
-          selectedUserId === user.id ? styles.active : ''
-        }`}>
+      <div className={`${styles.container} ${isActive ? styles.active : ''}`}>
         <div>
           {parts.map((part, index) => (
             <span
@@ -33,7 +33,9 @@ const UserItem: FC<{ user: IUser }> = ({ user }) => {
             </span>
           ))}
         </div>
-        <div className={styles.postCount}>{user.postCount}</div>
+        <div data-testid={`post-count-${user.id}`} className={styles.postCount}>
+          {user.postCount}
+        </div>
       </div>
     </Link>
   )

@@ -4,9 +4,10 @@ import auth from '@src/features/auth/authSlice'
 import post from '@src/features/post/postSlice'
 import filter from '@src/features/filter/filterSlice'
 
-export function makeStore() {
+export function makeStore(preloadedState = {}) {
   return configureStore({
-    reducer: { post, auth, filter }
+    reducer: { post, auth, filter },
+    preloadedState
   })
 }
 

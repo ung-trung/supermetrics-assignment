@@ -8,6 +8,7 @@ const PostDirection = () => {
   const dispatch = useAppDispatch()
   return (
     <button
+      data-testid="change-post-direct"
       aria-label={`sort post via date in ${
         postDateOrder === 'desc' ? 'asc' : 'desc'
       } order`}

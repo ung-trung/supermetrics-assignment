@@ -9,7 +9,7 @@ import UserList from '@src/features/post/UserList'
 import UserFilter from '@src/features/filter/UserFilter'
 import PostFilter from '@src/features/filter/PostFilter'
 import PostDirection from '@src/features/filter/PostDirection'
-import styles from 'src/styles/Home.module.css'
+import styles from '@src/styles/Home.module.css'
 
 const IndexPage: NextPage = () => {
   const hasToken = useAppSelector((state) => Boolean(state.auth.token))

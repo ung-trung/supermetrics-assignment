@@ -17,7 +17,7 @@
 6. Search box for senders. Any senders whose name do not contain the text entered are hidden ✅
 7. Search box for posts. Any posts that do not contain the text entered are hidden ✅
 8. Deep-linkable post list. This means that it is possible to enter a URL that directly selects the sender whose posts are shown. ✅
-9. Unit test for (4) -> (7)
+9. Unit test for (4) -> (7) ✅
 
 # Limitations and Thoughts
 - Authentication flow:

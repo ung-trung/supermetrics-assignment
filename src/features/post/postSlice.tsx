@@ -23,7 +23,7 @@ const initialState: PostState = {
   error: null
 }
 
-const maxPage = 1
+const maxPage = 10
 
 export const postSlice = createSlice({
   name: 'post',

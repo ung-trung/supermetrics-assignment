@@ -9,16 +9,22 @@ const distinctUsersFromPosts = (posts: IPost[]): IUser[] => {
   const distinctUserIds = [
     ...Array.from(new Set(posts.map((post) => post.from_id)))
   ]
-  const users = distinctUserIds.map((id) => {
-    const userPost = posts.find((post) => post.from_id === id)
-    const postCount = posts.filter((post) => post.from_id === id).length
-    const user = {
-      id: userPost.from_id,
-      name: userPost.from_name,
-      postCount
-    }
-    return user
-  })
+  const users = distinctUserIds
+    .map((id) => {
+      const userPost = posts.find((post) => post.from_id === id)
+      const postCount = posts.filter((post) => post.from_id === id).length
+      const user = {
+        id: userPost.from_id,
+        name: userPost.from_name,
+        postCount
+      }
+      return user
+    })
+    .sort((a, b) => {
+      if (a.name < b.name) return -1
+      if (a.name > b.name) return 1
+      return 0
+    })
   return users
 }
 
@@ -43,11 +49,7 @@ const UserList = () => {
             .toLocaleLowerCase()
             .includes(userFilterTerm.toLocaleLowerCase())
         )
-        .sort((a, b) => {
-          if (a.name < b.name) return -1
-          if (a.name > b.name) return 1
-          return 0
-        })
+
         .map((user) => (
           <UserItem
             key={user.id}

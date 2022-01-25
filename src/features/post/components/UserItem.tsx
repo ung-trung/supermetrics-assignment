@@ -3,15 +3,12 @@ import { IUser } from '@src/type'
 import match from 'autosuggest-highlight/match'
 import parse from 'autosuggest-highlight/parse'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import { FC } from 'react'
 import styles from './UserItem.module.css'
 const UserItem: FC<{ user: IUser; isActive: boolean }> = ({
   user,
   isActive
 }) => {
-  const router = useRouter()
-
   const userFilterTerm = useAppSelector((state) => state.filter.userFilterTerm)
   const matches = match(
     user.name.toLocaleLowerCase(),

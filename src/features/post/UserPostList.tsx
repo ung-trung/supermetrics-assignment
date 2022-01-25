@@ -2,7 +2,7 @@ import { useAppSelector } from '@src/app/hooks'
 import { useRouter } from 'next/router'
 import PostItem from './components/PostItem'
 import styles from './share.module.css'
-const PostList = () => {
+const UserPostList = () => {
   const postFilterTerm = useAppSelector((state) => state.filter.postFilterTerm)
   const postDateOrder = useAppSelector((state) => state.filter.postDateOrder)
   const posts = useAppSelector((state) => state.post.posts)
@@ -32,4 +32,4 @@ const PostList = () => {
   )
 }
 
-export default PostList
+export default UserPostList

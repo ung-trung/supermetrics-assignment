@@ -25,12 +25,12 @@
 #### Diagram of the application authentication flow 
 ![image](https://user-images.githubusercontent.com/23309848/151069980-a31c87d5-0c3d-44b0-9055-f128adf199ec.png) <br />
 
-- I use client-side authentication in this project. I dont check for token validation when the user first load the page. Instead, I implement an Axios interceptors that dispatch a logout action whenever the response status is 500. The reason is that in the assignment, it does not provide an API to check if token is valid. 
-- In a real-life application, a better, more Next JS approach would be using next-auth, which is Next JS official authetication solution. However, this would require more input from the backend side.
+- I use client-side authentication in this project. I don't check for token validation when the user first loads the page. Instead, I implement an Axios interceptor that dispatches a logout action whenever the response status is 500. The reason is that the assignment does not provide an API to check if the token is valid.
+- In a real-life application, a better, more Next JS approach would be using next-auth, which is NextJS official authentication solution. However, this would require more input from the backend side.
 
 ### Fetch Posts methods
-- I use Promise.all for all of the 10 pages because I am provided with only one endpoint to fetch posts. Then I transform all of those 10 responses into one big array and set to redux store. 
-- To me, a better architectural approach for this application is to have one endpoint to fetch all users and one endpoint to fetch posts by user_id. However if this project is to test my frontend skills then I think this assignment is totally understandable.
+- I use Promise.all for all of the 10 pages because I am provided with only one endpoint to fetch posts. Then I transform all of those 10 responses into one big array and set it to redux store.
+- To me, a better architectural approach for this application is to have one endpoint to fetch all users and one endpoint to fetch posts by user_id. However, if this project is to test my frontend skills then I think this assignment is totally understandable.
 
 
 ### Code redability vs Performance
@@ -39,7 +39,7 @@
 
 - Here, I use the declarative way to transform the response data. 
 - Firstly, I map through the responses array from Promise.all. Then I reduce the data to suit my store type. 
-- I understand that this is not the most optimized way to manipulate the array, and I can use the imperative way to write a more optimised for loops. However, since this performance issue does not really affect the app overval experiences, and using Array map and reduce functions improve the code readability, I choose to have keep using this declarative way.
+- I understand that this is not the most optimized way to manipulate the array, and I can use the imperative way to write a more optimized for loops. However, since this performance issue does not really affect the app overall experiences, and using Array map and reduce functions improves the code readability, I choose to keep using this declarative way.
 
 # How to use
 - Clone project to a locale folder.

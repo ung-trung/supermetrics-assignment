@@ -44,7 +44,7 @@
 # How to use
 - Clone project to a locale folder.
 - Create a .env file with this value
-- NEXT_PUBLIC_CLIENT_ID=your_client_id
+- NEXT_PUBLIC_CLIENT_ID=your_client_id (get client id from https://github.com/supermetrics-public/react-assignment)
 
 # Screenshots
 

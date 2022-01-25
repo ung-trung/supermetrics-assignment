@@ -14,6 +14,7 @@ import styles from '@src/styles/Home.module.css'
 const IndexPage: NextPage = () => {
   const hasToken = useAppSelector((state) => Boolean(state.auth.token))
   const isLoading = useAppSelector((state) => state.post.isLoading)
+  const posts = useAppSelector((state) => state.post.posts)
 
   const router = useRouter()
   const dispatch = useAppDispatch()
@@ -25,7 +26,7 @@ const IndexPage: NextPage = () => {
     }
   }, [hasToken])
 
-  if (isLoading) {
+  if (isLoading || posts.length === 0) {
     return <div className="container">Loading...</div>
   }
 

@@ -19,6 +19,7 @@ const Login: NextPage = () => {
     <div className={styles.container}>
       <Head>
         <title>Login | Assignment</title>
+        <meta name="description" content="Supermetrics Assignment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <LoginForm />

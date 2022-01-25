@@ -13,6 +13,7 @@ import styles from 'src/styles/Home.module.css'
 
 const IndexPage: NextPage = () => {
   const hasToken = useAppSelector((state) => Boolean(state.auth.token))
+
   const router = useRouter()
   const dispatch = useAppDispatch()
   useEffect(() => {
@@ -27,6 +28,7 @@ const IndexPage: NextPage = () => {
     <div className="container">
       <Head>
         <title>Trung Ung | Assignment</title>
+        <meta name="description" content="Supermetrics Assignment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

@@ -8,6 +8,9 @@ const PostDirection = () => {
   const dispatch = useAppDispatch()
   return (
     <button
+      aria-label={`sort post via date in ${
+        postDateOrder === 'desc' ? 'asc' : 'desc'
+      } order`}
       className="icon-btn"
       onClick={() => {
         dispatch(togglePostDateOrder())

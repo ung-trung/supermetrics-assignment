@@ -13,6 +13,7 @@ import styles from 'src/styles/Home.module.css'
 
 const IndexPage: NextPage = () => {
   const hasToken = useAppSelector((state) => Boolean(state.auth.token))
+  const isLoading = useAppSelector((state) => state.post.isLoading)
 
   const router = useRouter()
   const dispatch = useAppDispatch()
@@ -23,6 +24,10 @@ const IndexPage: NextPage = () => {
       dispatch(fetchPosts())
     }
   }, [hasToken])
+
+  if (isLoading) {
+    return <div className="container">Loading...</div>
+  }
 
   return (
     <div className="container">

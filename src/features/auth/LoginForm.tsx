@@ -1,10 +1,11 @@
 import { useForm } from 'react-hook-form'
-import { useAppDispatch } from '@src/app/hooks'
+import { useAppDispatch, useAppSelector } from '@src/app/hooks'
 import { login } from './authSlice'
 import styles from '@src/features/auth/LoginForm.module.css'
 
 const LoginForm = () => {
   const dispatch = useAppDispatch()
+  const isLoading = useAppSelector((state) => state.auth.isLoading)
   const {
     register,
     handleSubmit,
@@ -43,7 +44,10 @@ const LoginForm = () => {
           className="input"
           {...register('email', {
             required: 'Email is required!',
-            pattern: { message: 'Email is invalid!', value: /^\S+@\S+$/i }
+            pattern: {
+              message: 'Email is invalid!',
+              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+            }
           })}
         />
         {errors.email && (
@@ -53,7 +57,7 @@ const LoginForm = () => {
 
       <div className={styles.cta}>
         <button className="btn" type="submit">
-          go
+          go {isLoading && '...'}
         </button>
       </div>
     </form>

@@ -1,7 +1,7 @@
 # Supermetrics assignment
 
 - This is the return of the assignment of Supermetrics
-- Demo link: https://youthful-einstein-c3a68f.netlify.app/
+- Demo link: https://supermetrics-trungung.netlify.app/
 
 # Technology Choice
 - TypeScript
